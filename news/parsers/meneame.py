@@ -7,6 +7,8 @@ class Meneame(Parser):
         self.site_url = 'http://www.meneame.net/'
         self.feed_url = 'http://www.meneame.net/rss2.php'
         
+        self.cdata_regex = re.compile(r'<!\[CDATA\[(.*?)\]\]>')
+        
     """
     def get_content(self):
         f = open('/home/hugo/Escritorio/meneame_feed.xml')
@@ -35,3 +37,10 @@ class Meneame(Parser):
         data = super(Meneame, self).clean_data(data);
         data['date'] = datetime.strptime(data['date'][:-6], '%a, %d %b %Y %H:%M:%S')
         return data
+    
+    def sanitize(self, content):
+        cdata = self.cdata_regex.search(content)
+        if cdata:
+            content = cdata.groups()[0]
+        #content = re.sub('<script([^>]*>(.*?)</script>', '', content)
+        return content

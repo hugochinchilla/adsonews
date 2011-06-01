@@ -1,0 +1,14 @@
+{% for entry in entries %}
+    
+    <div class="entry article_block">
+        <h2>{{ entry.title }}</h2>
+        <div class="quotation body">
+            {{ entry.body|safe|linebreaks }}
+        </div>
+        <div class="quotation meta">
+            <span>Fuente:</span>
+            {{ entry.source }}
+        </div>
+    </div>
+    
+{% endfor %}

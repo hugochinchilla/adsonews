@@ -1,0 +1,51 @@
+{% load record i18n %}
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+    "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+
+<html xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    {% record title %}{% block title %}Noticias 123{% endblock %}{% endrecord %}
+	<title>{% recall title %}</title>
+	
+	<!-- Basic Meta Data -->
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link type="text/css" rel="stylesheet" media="all" href="/static/style.css" />
+    
+    
+    {% block extra_head %}{% endblock %}
+    
+</head>
+
+<body>
+    <div id="wrapper">
+        <div id="header">
+            <h1>{% recall title %}</h1>
+        </div>
+        
+        <ul id="nav">
+            <li><a href="{% url news_home %}">{% trans "Últimas noticias" %}</a></li>
+        </ul>
+        
+        <div id="content">
+            {% block content %}{% endblock %}
+        </div>
+        
+        <div id="sidebar">
+            {% block sidebar %}
+            <p>Pellentesque aliquam, leo ac fringilla luctus, velit mauris feugiat mauris,
+            in ornare dolor tortor et diam. Nullam in tortor quam, id pellentesque justo.
+            Donec condimentum mollis augue, nec molestie ipsum egestas in. Fusce aliquet
+            commodo bibendum.</p>
+
+            <p>Aenean vel nibh lorem, at aliquet nunc. Integer pretium sem quis erat facilisis
+            dictum. Etiam pretium mauris non neque sollicitudin vestibulum.</p>
+            {% endblock %}
+        </div>
+        
+        <div id="footer">
+            {% block footer %}{% endblock %}
+        </div>
+    </div>
+</body>
+</html>

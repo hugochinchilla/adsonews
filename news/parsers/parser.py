@@ -22,7 +22,12 @@ class Parser(object):
         return self.entry_regex.search(new)
         
     def clean_data(self, data):
-        return data.groupdict();
+        data = data.groupdict()
+        data['body'] = self.sanitize(data['body'])
+        return data
+        
+    def sanitize(self, content):
+        return content
         
     def get_content(self):
         f = urllib.urlopen(self.feed_url)

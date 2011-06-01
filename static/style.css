@@ -1,0 +1,135 @@
+body {
+    background-color: #E1E6E9;
+    font: 72.5%/2.2em Arial,Helvetica,Sans-serif;
+    color: #575757;
+}
+
+a {
+    color: inherit;
+}
+
+#wrapper {
+    width: 920px;
+    margin: 10px auto;
+}
+
+#header {
+    text-align: right;
+}
+    #header h1 {
+        font-size: 0.9em;
+        font-weight: normal;
+    }
+
+#nav {
+    background: #000;
+    list-style: none;
+    padding: 0;
+    margin-bottom: 10px;
+    height: 26px;
+    font-size: 1.2em;
+}
+    #nav li {
+        padding: 0 0 0 20px;
+        margin: 0;
+        display: block;
+        float: left;
+        height: 26px;
+    }
+    #nav li a {
+        color: #C0C0C0;
+        line-height: 26px;
+        text-decoration: none;
+        text-transform: uppercase;
+        font-weight: bold;
+    }
+    
+#content {
+    float: left;
+    width: 640px;
+}
+
+#sidebar {
+    width: 240px;
+    margin-left: 20px;
+    float: left;
+}
+
+.article_block {
+    background: #F8F8F8;
+    border: 1px solid #CACACA;
+    padding: 20px;
+    margin-bottom: 10px;
+}
+.article_block h2 {
+    color: #2F2F2F;
+    font-size: 13px;
+    margin: 0;
+    padding-bottom: 10px;
+    text-transform: uppercase;
+}
+.article_block .meta {
+    
+}
+.article_block .meta span {
+    font-weight: bold;
+}
+
+ul.pagination {
+    padding: 0;
+    margin: 0 0 10px 0;
+    overflow: auto;
+}
+ul.pagination li {
+    display: block;
+    color: #000000;
+    border: 1px solid #B3B3B3;
+    background: #F2F2F2;
+    float: left;
+    margin: 0 5px 0 0;
+    padding: 0 10px;
+    list-style: none;
+}
+ul.pagination li.current {
+    border: 0 none;
+    background: transparent;
+}
+ul.pagination li a {
+    text-decoration: none;
+}
+
+ul.tagcloud {
+    list-style: none;
+    overflow: auto;
+    font-size: 16px;
+}
+    ul.tagcloud li {
+        margin: 10px 10px 10px 0;
+        line-height: 1em;
+        display: inline;
+        white-space: nowrap;
+    }
+    ul.tagcloud li a {
+        text-decoration: none;
+    }
+    ul.tagcloud li a:hover {
+        text-decoration: underline;
+    }    
+    ul.tagcloud .tag0 { font-size: 0.7em; font-weight: 100; }
+    ul.tagcloud .tag1 { font-size: 0.8em; font-weight: 200; }
+    ul.tagcloud .tag2 { font-size: 0.9em; font-weight: 300; }
+    ul.tagcloud .tag3 { font-size: 1.0em; font-weight: 400; }
+    ul.tagcloud .tag4 { font-size: 1.2em; font-weight: 500; }
+    ul.tagcloud .tag5 { font-size: 1.4em; font-weight: 600; }
+    ul.tagcloud .tag6 { font-size: 1.6em; font-weight: 700; }
+    ul.tagcloud .tag7 { font-size: 1.8em; font-weight: 800; }
+    ul.tagcloud .tag8 { font-size: 2.2em; font-weight: 900; }
+    ul.tagcloud .tag9 { font-size: 2.5em; font-weight: 900; }
+    
+#tags_by_letter {
+    text-align: center;
+    font-size: 1.1em;
+}
+#tags_by_letter a {
+    padding: 0 3px;
+}

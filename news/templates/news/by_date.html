@@ -1,0 +1,24 @@
+{% extends "layout.html" %}
+{% load record i18n %}
+
+{% block title %}Noticias 123 - Página {{ pager.current_page }}{% endblock %}
+
+{% block content %}
+    {% with results.object_list as entries %}
+        {% include "news/list.html" %}
+    {% endwith %}
+    
+    <ul class="pagination">
+        {% for page in pager.page_range %}
+        <li class="{% if page == pager.current_page %}current{% endif %}">
+            {% if page == pager.current_page %}
+                {{ page }}
+            {% else %}{% if page == 1 %}
+                <a href="{% url news_by_date %}">{{ page }}</a>
+            {% else %}
+                <a href="{% url news_by_date page %}">{{ page }}</a>
+            {% endif %}{% endif %}
+        </li>
+        {% endfor %}
+    </ul>
+{% endblock %}
