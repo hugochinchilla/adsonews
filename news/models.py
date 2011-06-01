@@ -6,10 +6,16 @@ class New(models.Model):
     title = models.CharField(max_length=255)
     slug = models.CharField(max_length=255)
     body = models.TextField()
-    url = models.CharField(max_length=255)
-    source = models.CharField(max_length=255)
+    entry_url = models.CharField(max_length=255)
+    source_name = models.CharField(max_length=255)
+    source_url = models.URLField(max_length=255)
+    source_slug = models.CharField(max_length=255)
     date = models.DateTimeField()
     imported_at = models.DateTimeField(auto_now_add=True)
+    
+    class Meta():
+        get_latest_by = "date"
+        ordering = ['-date']
     
 
 """

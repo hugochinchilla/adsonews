@@ -1,13 +1,25 @@
 {% for entry in entries %}
     
     <div class="entry article_block">
-        <h2>{{ entry.title|safe }}</h2>
+        <h2>
+            <a href="{{ entry.entry_url }}" title="{{ entry.title }}">
+                {{ entry.title|safe }}
+            </a>
+        </h2>
         <div class="quotation body">
             {{ entry.body|safe|linebreaks }}
         </div>
         <div class="quotation meta">
             <span>Fuente:</span>
-            {{ entry.source }}
+            <a href="{{ entry.source_url }}" title="{{ entry.source_name }}">
+                {{ entry.source_name }}
+            </a>
+            {% if not site_name %}
+                |
+                <a href="{% url news_by_source entry.source_slug %}">
+                    Ver más noticias de {{ entry.source_name }}
+                </a>
+            {% endif %}
         </div>
     </div>
     

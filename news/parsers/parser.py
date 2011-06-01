@@ -2,14 +2,21 @@ import re
 import urllib
 from  datetime import datetime
 
+from django.template.defaultfilters import slugify
+from django.utils.html import strip_tags
+
 from news.models import New
+
 
 class Parser(object):
     
     def __init__(self):
-        self.configure();
+        self.site_name = None
+        self.site_url = None
+        self.site_slug = None
         self.entry_regex = self.get_entry_regex()
         self.cdata_regex = re.compile(r'<!\[CDATA\[(.*?)\]\]>')
+        self.configure();
         
     def configure(self):
         raise Exception('configure is not implemented')
@@ -21,14 +28,15 @@ class Parser(object):
         raise Exception('get_entry_regex is not implemented')
         
     def parse_entry(self, new):
-        return self.entry_regex.search(new)
+        match_object = self.entry_regex.search(new)
+        data = match_object.groupdict()
+        data['source_name'] = self.site_name
+        data['source_url'] = self.site_url
+        data['source_slug'] = slugify(self.site_name)
+        return data
         
     def clean_data(self, data):
-        """
-        Convert a string like "Sun, 29 May 2011 18:55:02 +0000" to
-        a valid datetime object.
-        """
-        data = data.groupdict()
+        data['title'] = self.sanitize(data['title'])
         data['body'] = self.sanitize(data['body'])
         data['date'] = datetime.strptime(data['date'][:-6], '%a, %d %b %Y %H:%M:%S')
         return data        
@@ -37,7 +45,7 @@ class Parser(object):
         cdata = self.cdata_regex.search(content)
         if cdata:
             content = cdata.groups()[0]
-        #content = re.sub('<script([^>]*>(.*?)</script>', '', content)
+        content = strip_tags(content)
         return content
         
     def get_content(self):

@@ -4,6 +4,7 @@ from news.parsers import Parser
 
 class Nopuedocreer(Parser):
     def configure(self):
+        self.site_name = 'No puedo creer'
         self.site_url = 'http://www.nopuedocreer.com/'
         self.feed_url = 'http://www.nopuedocreer.com/quelohayaninventado/feed/'
             
@@ -13,7 +14,7 @@ class Nopuedocreer(Parser):
     def get_entry_regex(self):
         parts = [
             r'<title>(?P<title>.*?)</title>',
-            r'<link>(?P<url>.*?)</link>',
+            r'<link>(?P<entry_url>.*?)</link>',
             r'<pubDate>(?P<date>.*?)</pubDate>',
             r'<description>(?P<body>.*?)</description>',
         ]

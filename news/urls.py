@@ -12,4 +12,8 @@ urlpatterns = patterns('',
         views.by_date,
         name='news_by_date'
     ),
+    url('^noticias/(?P<source>[a-z0-9_-]+)/(?P<page>\w|\d+)?$',
+        views.by_source,
+        name='news_by_source'
+    ),
 )

@@ -3,6 +3,7 @@ from news.parsers import Parser
 
 class Meneame(Parser):
     def configure(self):
+        self.site_name = 'Meneame'
         self.site_url = 'http://www.meneame.net/'
         self.feed_url = 'http://www.meneame.net/rss2.php'
     
@@ -11,7 +12,7 @@ class Meneame(Parser):
         
     def get_entry_regex(self):
         parts = [
-            r'<meneame:url>(?P<url>.*?)</meneame:url>',
+            r'<meneame:url>(?P<entry_url>.*?)</meneame:url>',
             r'<title>(?P<title>.*?)</title>',
             r'<pubDate>(?P<date>.*?)</pubDate>',
             r'<description>(?P<body>.*?)</description>',
