@@ -4,9 +4,21 @@ from  datetime import datetime
 
 from django.template.defaultfilters import slugify
 from django.utils.html import strip_tags
+from django.db.utils import IntegrityError
 
 from news.models import New
 
+_HEADER = '\033[95m'
+_OKBLUE = '\033[94m'
+_OKGREEN = '\033[92m'
+_WARNING = '\033[93m'
+_FAIL = '\033[91m'
+_ENDC = '\033[0m'
+
+green = lambda x: _OKGREEN + x + _ENDC
+blue = lambda x: _OKBLUE + x + _ENDC
+orange = lambda x: _WARNING + x + _ENDC
+red = lambda x: _FAIL + x + _ENDC
 
 class Parser(object):
     
@@ -59,6 +71,11 @@ class Parser(object):
         for entry in entries:
             data = self.parse_entry(entry)
             data = self.clean_data(data)
-            new = New(**data)
-            new.save();
-            
+            try:
+                new = New(**data)
+                new.save();
+                print "%s %s" % (green('Nueva noticia:'), new.title)
+            except IntegrityError, e:
+                print "%s %s" % (orange('Noticia duplicada:'), new.title)
+            except:
+                print "%s %s" % (red('Error cargando noticia:'), new.title)

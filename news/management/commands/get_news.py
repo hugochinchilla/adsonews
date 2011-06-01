@@ -11,4 +11,4 @@ class Command(BaseCommand):
             p = parser()
             p.import_news()
             
-        self.stdout.write('Successfully done nothing\n')
+        self.stdout.write('All done, have a nice day :)\n')

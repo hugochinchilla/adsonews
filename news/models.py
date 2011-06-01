@@ -8,7 +8,7 @@ class New(models.Model):
     body = models.TextField()
     entry_url = models.CharField(max_length=255)
     source_name = models.CharField(max_length=255)
-    source_url = models.URLField(max_length=255)
+    source_url = models.URLField(max_length=255, unique=True)
     source_slug = models.CharField(max_length=255)
     date = models.DateTimeField()
     imported_at = models.DateTimeField(auto_now_add=True)
