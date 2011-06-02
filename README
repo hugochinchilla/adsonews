@@ -1,3 +1,9 @@
+# Authors:
+# Andreu Ramos Amengual <sirandreuofarcadia@gmail.com>
+# Hugo Chinchilla Carbonell <hugo@bulma.net>
+#
+# Code available on github: https://github.com/hugochinchilla/adsonews
+
 # create the database
 ./manage.py syncdb --noinput
 
