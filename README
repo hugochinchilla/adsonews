@@ -1,0 +1,10 @@
+# create the database
+./manage.py syncdb --noinput
+
+# load contents
+./manage.py get_news
+
+# run server
+./manage runserver
+
+# visit http://127.0.0.1:8000 on your browser
